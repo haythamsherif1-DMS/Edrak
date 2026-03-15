@@ -40,15 +40,16 @@
         }
         .nav-link-sidebar:hover { background: #f0f7ff; color: var(--primary-blue); transform: translateX(-5px); }
 
-        /* تعديل خاص لإظهار العداد بجانب النص */
-        .nav-link-notif { justify-content: space-between; }
+        /* ستايل العداد (البادج) الأحمر للإشعارات */
+        .nav-link-notif { justify-content: space-between !important; }
         .badge-notif { 
             background-color: #dc3545; 
             color: white; 
             border-radius: 50px; 
-            padding: 2px 8px; 
+            padding: 2px 9px; 
             font-size: 0.8rem; 
-            display: none; /* مخفي افتراضياً حتى يتم جلب الرقم */
+            display: none; /* يظهر فقط عند وجود إشعارات */
+            font-weight: bold;
             animation: pulse 2s infinite;
         }
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
@@ -132,7 +133,7 @@
             <i class="fas fa-calendar-alt"></i> <span class="txt-vacation">الإجازات والأذونات</span>
         </a>
         
-        <a href="#" onclick="openInApp('https://script.google.com/macros/s/AKfycbzUfCP-haY81TV4NOSy5kjFLU9mRpLzh-Q_y-C6kJ8qYuMHGEQcGxysuQG3I-yiEDUl/exec', 'Notifications')" class="nav-link-sidebar nav-link-notif">
+        <a href="#" onclick="openInApp('https://script.google.com/macros/s/AKfycbxTRmqsMHZaJOsqsU2ANYAhpppmxOndjw7V_gjJ0gsRmgl7gcuMm2CoOXhxqTYg-1w/exec', 'Notifications')" class="nav-link-sidebar nav-link-notif">
             <div><i class="fas fa-bell"></i> <span class="txt-notif">الإشعارات الحديثة</span></div>
             <span id="notifBadge" class="badge-notif">0</span>
         </a>
@@ -177,7 +178,7 @@
     const iframe = document.getElementById('appIframe');
     const loader = document.getElementById('globalLoader');
 
-    // دالة تحديث عدد الإشعارات من السكربت
+    // وظيفة جلب العداد وتحديثه في الواجهة
     function updateNotifCount() {
         if (typeof google !== 'undefined' && google.script && google.script.run) {
             google.script.run.withSuccessHandler(function(count) {
@@ -192,7 +193,7 @@
         }
     }
 
-    // تشغيل العداد عند تحميل الصفحة
+    // استدعاء العداد عند التحميل
     window.addEventListener('load', updateNotifCount);
 
     modalEl.addEventListener('hidden.bs.modal', function () {
