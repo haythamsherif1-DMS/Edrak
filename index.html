@@ -12,9 +12,13 @@
     <link rel="preconnect" href="https://script.google.com">
     
     <style>
+        /* --- لوحة الألوان الجديدة المستوحاة من الشعار --- */
         :root {
-            --primary-blue: #004a99;
-            --soft-bg: #f4f7f9;
+            --edrak-blue: #1A3668;      /* الأزرق الداكن من الشعار - للعنوانين والخلفيات */
+            --edrak-red: #E31D2B;       /* الأحمر الزاهي - للإشعارات واللمسات الفنية */
+            --edrak-orange: #F37021;    /* البرتقالي - للتفاعل والأزرار الثانوية */
+            --soft-bg: #F0F4F8;        /* خلفية فاتحة مريحة للعين */
+            --text-dark: #2C3E50;
         }
 
         body {
@@ -22,28 +26,51 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0; padding: 0; overflow-x: hidden;
             height: 100vh;
+            color: var(--text-dark);
         }
 
+        /* --- الهيدر (Navbar) --- */
         .navbar {
             background: white;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             padding: 10px 5%;
             position: sticky; top: 0; z-index: 1000;
         }
 
-        .offcanvas { width: 300px !important; border: none; box-shadow: 5px 0 20px rgba(0,0,0,0.1); }
-        .sidebar-header { background: var(--primary-blue); color: white; padding: 30px 20px; }
-        .nav-link-sidebar {
-            padding: 18px 25px; color: #444; text-decoration: none;
-            display: flex; align-items: center; gap: 15px;
-            border-bottom: 1px solid #f0f0f0; transition: 0.3s; font-weight: 500;
+        .navbar .fa-bars {
+            color: var(--edrak-blue) !important; /* لون أيقونة القائمة */
         }
-        .nav-link-sidebar:hover { background: #f0f7ff; color: var(--primary-blue); transform: translateX(-5px); }
 
-        /* ستايل العداد (البادج) الأحمر للإشعارات */
+        /* --- القائمة الجانبية (Sidebar) --- */
+        .offcanvas { width: 300px !important; border: none; box-shadow: 5px 0 20px rgba(0,0,0,0.1); }
+        
+        .sidebar-header { 
+            background: var(--edrak-blue); /* الخلفية الزرقاء الداكنة */
+            color: white; 
+            padding: 30px 20px; 
+        }
+        
+        .nav-link-sidebar {
+            padding: 18px 25px; color: var(--text-dark); text-decoration: none;
+            display: flex; align-items: center; gap: 15px;
+            border-bottom: 1px solid #eee; transition: 0.3s; font-weight: 500;
+        }
+        
+        .nav-link-sidebar i {
+            color: var(--edrak-orange); /* لون الأيقونات برتقالي */
+            width: 20px; text-align: center;
+        }
+
+        .nav-link-sidebar:hover { 
+            background: #E8EFCF; /* لون خفيف جداً عند التمرير */
+            color: var(--edrak-blue); 
+            transform: translateX(-5px); 
+        }
+
+        /* ستايل العداد (البادج) الأحمر للإشعارات - مستخدم الأحمر من الشعار */
         .nav-link-notif { justify-content: space-between !important; }
         .badge-notif { 
-            background-color: #dc3545; 
+            background-color: var(--edrak-red); 
             color: white; 
             border-radius: 50px; 
             padding: 2px 9px; 
@@ -54,52 +81,114 @@
         }
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
 
+        /* --- حاوية الصورة الرئيسية (التعديل لتبدو أصغر وأوضح) --- */
         .hero-container {
             height: calc(100vh - 80px);
             display: flex; 
             align-items: center; 
             justify-content: center;
-            perspective: 1200px;
-            padding: 20px;
+            perspective: 1000px; /* منظور أخف */
+            padding: 30px;
             background: white;
+            overflow: hidden;
         }
         
         .scene-3d {
-            width: 100%;
-            max-width: 750px;
+            width: 80%;
+            max-width: 400px; /* تحديد العرض الأقصى لتبدو أصغر */
             transform-style: preserve-3d;
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-            transform: rotateX(8deg) rotateY(-8deg);
+            transition: all 0.6s ease-in-out;
+            transform: rotateX(5deg) rotateY(-5deg); /* ميلان خفيف جداً للوضوح */
         }
 
-        @media (min-width: 992px) {
-            .scene-3d { transform: rotateX(10deg) rotateY(-10deg); }
-            .scene-3d:hover { transform: rotateX(0deg) rotateY(0deg) scale(1.05); }
+        /* إلغاء الميلان في الموبايل تماماً لزيادة الوضوح */
+        @media (max-width: 768px) {
+            .scene-3d {
+                width: 70%;
+                max-width: 280px;
+                transform: rotateX(0deg) rotateY(0deg) !important;
+            }
         }
 
         .main-hero-img {
             width: 100%;
             height: auto;
-            max-height: 65vh;
             object-fit: contain;
-            border-radius: 30px;
-            box-shadow: 25px 25px 50px rgba(0,0,0,0.2);
-            border: 10px solid white;
+            border-radius: 20px; /* حواف ناعمة */
+            box-shadow: 0 15px 35px rgba(26, 54, 104, 0.15); /* ظل لونه أزرق خفيف */
+            border: 4px solid white; /* إطار أنحف */
             display: block;
         }
 
-        .modal-full { max-width: 100%; margin: 0; height: 100%; }
-        .modal-content { height: 100vh; border: none; border-radius: 0; overflow: hidden; position: relative; }
-        .back-nav-bar { background: white; padding: 12px 25px; display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid #eee; }
-        .btn-back-style { background: var(--primary-blue); color: white; border: none; padding: 8px 25px; border-radius: 50px; font-weight: bold; display: flex; align-items: center; gap: 10px; cursor: pointer; }
+        @media (min-width: 992px) {
+            .scene-3d:hover { 
+                transform: rotateX(0deg) rotateY(0deg) scale(1.03); /* العودة للوضع الطبيعي عند التحويم */
+            }
+        }
 
+        /* --- المودال (نافذة التطبيقات) --- */
+        .modal-full { max-width: 100%; margin: 0; height: 100%; }
+        .modal-content { height: 100vh; border: none; border-radius: 0; overflow: hidden; position: relative; background-color: white;}
+        
+        .back-nav-bar { 
+            background: white; 
+            padding: 12px 25px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            border-bottom: 2px solid #eee; 
+        }
+        
+        .modal-title-text {
+            color: var(--edrak-blue);
+            font-weight: bold;
+        }
+
+        .btn-back-style { 
+            background: var(--edrak-blue); 
+            color: white; 
+            border: none; 
+            padding: 8px 25px; 
+            border-radius: 50px; 
+            font-weight: bold; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            cursor: pointer; 
+            transition: 0.3s;
+        }
+        .btn-back-style:hover {
+            background: var(--edrak-red); /* تغيير اللون للأحمر عند التمرير */
+        }
+
+        /* --- لودر التحميل --- */
         #globalLoader { position: absolute; top: 65px; left: 0; right: 0; bottom: 0; background: #ffffff; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 1200; }
-        .loader-visual { width: 60px; height: 60px; border: 4px solid #f3f3f3; border-top: 4px solid var(--primary-blue); border-radius: 50%; animation: spin 1s linear infinite; }
+        .loader-visual { 
+            width: 50px; height: 50px; 
+            border: 4px solid #f3f3f3; 
+            border-top: 4px solid var(--edrak-orange); /* لون اللودر برتقالي */
+            border-radius: 50%; 
+            animation: spin 1s linear infinite; 
+        }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        #loadingTxt { color: var(--edrak-blue); }
 
         iframe { width: 100%; height: calc(100vh - 65px); border: none; display: block; visibility: hidden; }
         
-        .lang-toggle { cursor: pointer; padding: 6px 18px; border: 2px solid var(--primary-blue); border-radius: 25px; color: var(--primary-blue); font-weight: bold; }
+        /* --- زر تغيير اللغة --- */
+        .lang-toggle { 
+            cursor: pointer; 
+            padding: 6px 18px; 
+            border: 2px solid var(--edrak-blue); 
+            border-radius: 25px; 
+            color: var(--edrak-blue); 
+            font-weight: bold; 
+            transition: 0.3s;
+        }
+        .lang-toggle:hover {
+            background: var(--edrak-blue);
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -107,17 +196,17 @@
 <nav class="navbar d-flex justify-content-between align-items-center">
     <div class="d-flex align-items-center gap-3">
         <button class="btn p-0 border-0" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
-            <i class="fas fa-bars fa-2x text-primary"></i>
+            <i class="fas fa-bars fa-2x"></i>
         </button>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_bxPxMDdkYISQbRLcmYnEpiKs0-44MqXMyg&s" height="45" alt="Logo">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_bxPxMDdkYISQbRLcmYnEpiKs0-44MqXMyg&s" height="40" alt="Logo">
     </div>
     <div class="lang-toggle" onclick="toggleLanguage()" id="langBtn">EN</div>
 </nav>
 
 <div class="offcanvas offcanvas-start" id="sidebarMenu">
     <div class="sidebar-header">
-        <h4 id="sideTitle">Edrak_HR System </h4>
-        <p class="small mb-0 opacity-75">Edrak_HR_System</p>
+        <h4 id="sideTitle">نظام إدراك</h4>
+        <p class="small mb-0 opacity-75 txt-hr-desc">Edrak HR System</p>
     </div>
     <div class="offcanvas-body p-0">
         <a href="#" onclick="requestLocAndOpen('https://script.google.com/macros/s/AKfycbxjr9Cf-0VU9JFQLnClbekCX0K1KyN63WqbwADysUFTsXaFtmSzdax8UsKmZ9nMxp03/exec', 'Fingerprint')" class="nav-link-sidebar">
@@ -146,7 +235,7 @@
 
 <div class="hero-container">
     <div class="scene-3d animate__animated animate__zoomIn">
-        <img src="https://images.wuzzuf-data.net/files/company_logo/KidZania-Cairo-Egypt-9255-1513783010-og.jpg" alt="Edrak Illustration">
+        <img src="https://images.wuzzuf-data.net/files/company_logo/KidZania-Cairo-Egypt-9255-1513783010-og.jpg" class="main-hero-img" alt="Edrak Illustration">
     </div>
 </div>
 
@@ -154,7 +243,7 @@
     <div class="modal-dialog modal-full">
         <div class="modal-content">
             <div class="back-nav-bar">
-                <span class="fw-bold text-primary" id="modalTitleDisplay">System</span>
+                <span class="modal-title-text" id="modalTitleDisplay">System</span>
                 <button type="button" class="btn-back-style" data-bs-dismiss="modal">
                     <span id="backTxt">رجوع</span> <i class="fas fa-chevron-left"></i>
                 </button>
@@ -162,7 +251,7 @@
             <div class="modal-body p-0 position-relative">
                 <div id="globalLoader">
                     <div class="loader-visual"></div>
-                    <h5 id="loadingTxt" class="mt-3 text-primary fw-bold">جاري التحميل...</h5>
+                    <h5 id="loadingTxt" class="mt-3 fw-bold">جاري التحميل...</h5>
                 </div>
                 <iframe src="" id="appIframe" allow="geolocation"></iframe>
             </div>
@@ -219,7 +308,11 @@
         iframe.style.visibility = 'hidden';
         const finalUrl = url + (url.includes('?') ? '&' : '?') + 'authuser=0';
         modal.show();
-        bootstrap.Offcanvas.getInstance(document.getElementById('sidebarMenu')).hide();
+        // إغلاق القائمة الجانبية بأمان
+        const offcanvasEl = document.getElementById('sidebarMenu');
+        const openedOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasEl);
+        if (openedOffcanvas) openedOffcanvas.hide();
+        
         setTimeout(() => {
             iframe.src = finalUrl;
         }, 100);
@@ -242,8 +335,8 @@
 
     function updateTexts(l) {
         const trans = {
-            ar: { finger: "البصمة الذكية", db: "بيانات الموظفين", pay: "مفردات المرتب", vac: "الإجازات والأذونات", notif: "الإشعارات الحديثة", contact: "تواصل معنا", back: "رجوع", side: "نظام إدراك", loading: "جاري التحميل..." },
-            en: { finger: "Smart Fingerprint", db: "Employee Data", pay: "Payroll", vac: "Vacations", notif: "Recent Notifications", contact: "Contact Us", back: "Back", side: "Edrak System", loading: "Loading..." }
+            ar: { finger: "البصمة الذكية", db: "بيانات الموظفين", pay: "مفردات المرتب", vac: "الإجازات والأذونات", notif: "الإشعارات الحديثة", contact: "تواصل معنا", back: "رجوع", side: "نظام إدراك", loading: "جاري التحميل...", hr: "Edrak HR System" },
+            en: { finger: "Smart Fingerprint", db: "Employee Data", pay: "Payroll", vac: "Vacations", notif: "Recent Notifications", contact: "Contact Us", back: "Back", side: "Edrak System", loading: "Loading...", hr: "Edrak HR System" }
         };
         document.querySelector('.txt-finger').innerText = trans[l].finger;
         document.querySelector('.txt-db').innerText = trans[l].db;
@@ -254,6 +347,7 @@
         document.getElementById('backTxt').innerText = trans[l].back;
         document.getElementById('sideTitle').innerText = trans[l].side;
         document.getElementById('loadingTxt').innerText = trans[l].loading;
+        document.querySelector('.txt-hr-desc').innerText = trans[l].hr;
     }
 </script>
 </body>
