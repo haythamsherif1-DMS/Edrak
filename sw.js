@@ -1,9 +1,9 @@
-const CACHE_NAME = 'edrak-cache-v1.15';
+const CACHE_NAME = 'edrak-cache-v1.18';
 // قائمة الملفات والصور اللي عاوزينها تتحمل وتتحفظ
 const urlsToCache = [
-  './index.html?v=1.15',
-  './manifest.json?v=1.15',
-  './script.js?v=1.15',
+  './index.html?v=1.18',
+  './manifest.json?v=1.18',
+  './script.js?v=1.18',
   'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css',
   'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css'
 ];
