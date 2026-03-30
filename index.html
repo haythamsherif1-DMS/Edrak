@@ -82,31 +82,32 @@
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
 
         /* --- حاوية الصورة الرئيسية (التعديل لتبدو أصغر وأوضح) --- */
+        /* التعديلات الجديدة لتحسين مظهر الصورة */
         .hero-container {
             height: calc(100vh - 80px);
             display: flex; 
             align-items: center; 
             justify-content: center;
-            perspective: 1000px; /* منظور أخف */
-            padding: 30px;
+            perspective: 1000px;
+            padding: 20px;
             background: white;
-            overflow: hidden;
+            overflow: hidden; /* لمنع ظهور شريط تمرير بسبب تأثير الـ 3D */
         }
         
         .scene-3d {
-            width: 80%;
-            max-width: 400px; /* تحديد العرض الأقصى لتبدو أصغر */
+            width: 80%; /* تقليل العرض الإجمالي للمشهد */
+            max-width: 450px; /* تحديد أقصى عرض للاب توب لتبدو أصغر وأشيك */
             transform-style: preserve-3d;
-            transition: all 0.6s ease-in-out;
-            transform: rotateX(5deg) rotateY(-5deg); /* ميلان خفيف جداً للوضوح */
+            transition: all 0.6s ease;
+            transform: rotateX(5deg) rotateY(-5deg); /* تقليل الزاوية لزيادة الوضوح */
         }
 
-        /* إلغاء الميلان في الموبايل تماماً لزيادة الوضوح */
+        /* تعديلات خاصة بالموبايل */
         @media (max-width: 768px) {
             .scene-3d {
-                width: 70%;
-                max-width: 280px;
-                transform: rotateX(0deg) rotateY(0deg) !important;
+                width: 70%; /* تصغير إضافي للموبايل */
+                max-width: 250px; 
+                transform: rotateX(0deg) rotateY(0deg); /* إلغاء الميل في الموبايل لزيادة الوضوح */
             }
         }
 
@@ -114,15 +115,17 @@
             width: 100%;
             height: auto;
             object-fit: contain;
-            border-radius: 20px; /* حواف ناعمة */
-            box-shadow: 0 15px 35px rgba(26, 54, 104, 0.15); /* ظل لونه أزرق خفيف */
-            border: 4px solid white; /* إطار أنحف */
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15); /* ظل أنعم وأوضح */
+            border: 5px solid white; /* تقليل سمك الإطار */
             display: block;
         }
 
+        /* تأثير خفيف عند تمرير الماوس في اللاب توب */
         @media (min-width: 992px) {
             .scene-3d:hover { 
-                transform: rotateX(0deg) rotateY(0deg) scale(1.03); /* العودة للوضع الطبيعي عند التحويم */
+                transform: scale(1.02); 
+                box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             }
         }
 
@@ -235,10 +238,12 @@
 
 <div class="hero-container">
     <div class="scene-3d animate__animated animate__zoomIn">
-        <img src="https://images.wuzzuf-data.net/files/company_logo/KidZania-Cairo-Egypt-9255-1513783010-og.jpg" class="main-hero-img" alt="Edrak Illustration">
+        <img src="https://images.wuzzuf-data.net/files/company_logo/KidZania-Cairo-Egypt-9255-1513783010-og.jpg" 
+             class="main-hero-img" 
+             alt="Edrak Illustration">
     </div>
 </div>
-
+    
 <div class="modal fade" id="appModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
     <div class="modal-dialog modal-full">
         <div class="modal-content">
