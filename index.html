@@ -9,15 +9,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <link rel="preconnect" href="https://script.google.com">
-    
     <style>
-        /* --- لوحة الألوان الجديدة المستوحاة من الشعار --- */
         :root {
-            --edrak-blue: #1A3668;      /* الأزرق الداكن من الشعار - للعنوانين والخلفيات */
-            --edrak-red: #E31D2B;       /* الأحمر الزاهي - للإشعارات واللمسات الفنية */
-            --edrak-orange: #F37021;    /* البرتقالي - للتفاعل والأزرار الثانوية */
-            --soft-bg: #F0F4F8;        /* خلفية فاتحة مريحة للعين */
+            --edrak-blue: #1A3668;
+            --edrak-red: #E31D2B;
+            --edrak-orange: #F37021;
+            --soft-bg: #F0F4F8;
             --text-dark: #2C3E50;
         }
 
@@ -29,7 +26,6 @@
             color: var(--text-dark);
         }
 
-        /* --- الهيدر (Navbar) --- */
         .navbar {
             background: white;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -37,15 +33,12 @@
             position: sticky; top: 0; z-index: 1000;
         }
 
-        .navbar .fa-bars {
-            color: var(--edrak-blue) !important; /* لون أيقونة القائمة */
-        }
+        .navbar .fa-bars { color: var(--edrak-blue) !important; }
 
-        /* --- القائمة الجانبية (Sidebar) --- */
         .offcanvas { width: 300px !important; border: none; box-shadow: 5px 0 20px rgba(0,0,0,0.1); }
         
         .sidebar-header { 
-            background: var(--edrak-blue); /* الخلفية الزرقاء الداكنة */
+            background: var(--edrak-blue); 
             color: white; 
             padding: 30px 20px; 
         }
@@ -57,17 +50,16 @@
         }
         
         .nav-link-sidebar i {
-            color: var(--edrak-orange); /* لون الأيقونات برتقالي */
+            color: var(--edrak-orange);
             width: 20px; text-align: center;
         }
 
         .nav-link-sidebar:hover { 
-            background: #E8EFCF; /* لون خفيف جداً عند التمرير */
+            background: #E8EFCF; 
             color: var(--edrak-blue); 
             transform: translateX(-5px); 
         }
 
-        /* ستايل العداد (البادج) الأحمر للإشعارات - مستخدم الأحمر من الشعار */
         .nav-link-notif { justify-content: space-between !important; }
         .badge-notif { 
             background-color: var(--edrak-red); 
@@ -75,14 +67,12 @@
             border-radius: 50px; 
             padding: 2px 9px; 
             font-size: 0.8rem; 
-            display: none; /* يظهر فقط عند وجود إشعارات */
+            display: none;
             font-weight: bold;
             animation: pulse 2s infinite;
         }
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
 
-        /* --- حاوية الصورة الرئيسية (التعديل لتبدو أصغر وأوضح) --- */
-        /* التعديلات الجديدة لتحسين مظهر الصورة */
         .hero-container {
             height: calc(100vh - 80px);
             display: flex; 
@@ -91,23 +81,22 @@
             perspective: 1000px;
             padding: 20px;
             background: white;
-            overflow: hidden; /* لمنع ظهور شريط تمرير بسبب تأثير الـ 3D */
+            overflow: hidden;
         }
         
         .scene-3d {
-            width: 80%; /* تقليل العرض الإجمالي للمشهد */
-            max-width: 450px; /* تحديد أقصى عرض للاب توب لتبدو أصغر وأشيك */
+            width: 80%;
+            max-width: 450px;
             transform-style: preserve-3d;
             transition: all 0.6s ease;
-            transform: rotateX(5deg) rotateY(-5deg); /* تقليل الزاوية لزيادة الوضوح */
+            transform: rotateX(5deg) rotateY(-5deg);
         }
 
-        /* تعديلات خاصة بالموبايل */
         @media (max-width: 768px) {
             .scene-3d {
-                width: 70%; /* تصغير إضافي للموبايل */
+                width: 70%;
                 max-width: 250px; 
-                transform: rotateX(0deg) rotateY(0deg); /* إلغاء الميل في الموبايل لزيادة الوضوح */
+                transform: rotateX(0deg) rotateY(0deg);
             }
         }
 
@@ -116,20 +105,11 @@
             height: auto;
             object-fit: contain;
             border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15); /* ظل أنعم وأوضح */
-            border: 5px solid white; /* تقليل سمك الإطار */
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            border: 5px solid white;
             display: block;
         }
 
-        /* تأثير خفيف عند تمرير الماوس في اللاب توب */
-        @media (min-width: 992px) {
-            .scene-3d:hover { 
-                transform: scale(1.02); 
-                box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            }
-        }
-
-        /* --- المودال (نافذة التطبيقات) --- */
         .modal-full { max-width: 100%; margin: 0; height: 100%; }
         .modal-content { height: 100vh; border: none; border-radius: 0; overflow: hidden; position: relative; background-color: white;}
         
@@ -142,10 +122,7 @@
             border-bottom: 2px solid #eee; 
         }
         
-        .modal-title-text {
-            color: var(--edrak-blue);
-            font-weight: bold;
-        }
+        .modal-title-text { color: var(--edrak-blue); font-weight: bold; }
 
         .btn-back-style { 
             background: var(--edrak-blue); 
@@ -160,16 +137,13 @@
             cursor: pointer; 
             transition: 0.3s;
         }
-        .btn-back-style:hover {
-            background: var(--edrak-red); /* تغيير اللون للأحمر عند التمرير */
-        }
+        .btn-back-style:hover { background: var(--edrak-red); }
 
-        /* --- لودر التحميل --- */
         #globalLoader { position: absolute; top: 65px; left: 0; right: 0; bottom: 0; background: #ffffff; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 1200; }
         .loader-visual { 
             width: 50px; height: 50px; 
             border: 4px solid #f3f3f3; 
-            border-top: 4px solid var(--edrak-orange); /* لون اللودر برتقالي */
+            border-top: 4px solid var(--edrak-orange); 
             border-radius: 50%; 
             animation: spin 1s linear infinite; 
         }
@@ -178,7 +152,6 @@
 
         iframe { width: 100%; height: calc(100vh - 65px); border: none; display: block; visibility: hidden; }
         
-        /* --- زر تغيير اللغة --- */
         .lang-toggle { 
             cursor: pointer; 
             padding: 6px 18px; 
@@ -188,10 +161,7 @@
             font-weight: bold; 
             transition: 0.3s;
         }
-        .lang-toggle:hover {
-            background: var(--edrak-blue);
-            color: white;
-        }
+        .lang-toggle:hover { background: var(--edrak-blue); color: white; }
     </style>
 </head>
 <body>
@@ -233,6 +203,10 @@
         <a href="#" onclick="openInApp('https://script.google.com/macros/s/AKfycbwlxTldi-h9GyNuQY1d2ev45XxTniaJgq_7aM9CuAP3g_qtUMlhppq98E44tpZOGMU/exec', 'Contact')" class="nav-link-sidebar">
             <i class="fas fa-comments"></i> <span class="txt-contact">تواصل معنا</span>
         </a>
+
+        <a href="#" onclick="openInApp('https://drive.google.com/file/d/1XxWjKG4eUtHtqY5Hl-qaag9Y0mhtEARr/preview', 'System Guide')" class="nav-link-sidebar">
+            <i class="fas fa-file-pdf"></i> <span class="txt-guide">شرح النظام</span>
+        </a>
     </div>
 </div>
 
@@ -272,7 +246,6 @@
     const iframe = document.getElementById('appIframe');
     const loader = document.getElementById('globalLoader');
 
-    // وظيفة جلب العداد وتحديثه في الواجهة
     function updateNotifCount() {
         if (typeof google !== 'undefined' && google.script && google.script.run) {
             google.script.run.withSuccessHandler(function(count) {
@@ -287,7 +260,6 @@
         }
     }
 
-    // استدعاء العداد عند التحميل
     window.addEventListener('load', updateNotifCount);
 
     modalEl.addEventListener('hidden.bs.modal', function () {
@@ -313,7 +285,7 @@
         iframe.style.visibility = 'hidden';
         const finalUrl = url + (url.includes('?') ? '&' : '?') + 'authuser=0';
         modal.show();
-        // إغلاق القائمة الجانبية بأمان
+        
         const offcanvasEl = document.getElementById('sidebarMenu');
         const openedOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasEl);
         if (openedOffcanvas) openedOffcanvas.hide();
@@ -340,8 +312,8 @@
 
     function updateTexts(l) {
         const trans = {
-            ar: { finger: "البصمة الذكية", db: "بيانات الموظفين", pay: "مفردات المرتب", vac: "الإجازات والأذونات", notif: "الإشعارات الحديثة", contact: "تواصل معنا", back: "رجوع", side: "نظام إدراك", loading: "جاري التحميل...", hr: "Edrak HR System" },
-            en: { finger: "Smart Fingerprint", db: "Employee Data", pay: "Payroll", vac: "Vacations", notif: "Recent Notifications", contact: "Contact Us", back: "Back", side: "Edrak System", loading: "Loading...", hr: "Edrak HR System" }
+            ar: { finger: "البصمة الذكية", db: "بيانات الموظفين", pay: "مفردات المرتب", vac: "الإجازات والأذونات", notif: "الإشعارات الحديثة", contact: "تواصل معنا", guide: "شرح النظام", back: "رجوع", side: "نظام إدراك", loading: "جاري التحميل...", hr: "Edrak HR System" },
+            en: { finger: "Smart Fingerprint", db: "Employee Data", pay: "Payroll", vac: "Vacations", notif: "Recent Notifications", contact: "Contact Us", guide: "System Guide", back: "Back", side: "Edrak System", loading: "Loading...", hr: "Edrak HR System" }
         };
         document.querySelector('.txt-finger').innerText = trans[l].finger;
         document.querySelector('.txt-db').innerText = trans[l].db;
@@ -349,6 +321,7 @@
         document.querySelector('.txt-vacation').innerText = trans[l].vac;
         document.querySelector('.txt-notif').innerText = trans[l].notif;
         document.querySelector('.txt-contact').innerText = trans[l].contact;
+        document.querySelector('.txt-guide').innerText = trans[l].guide; // تحديث نص الشرح
         document.getElementById('backTxt').innerText = trans[l].back;
         document.getElementById('sideTitle').innerText = trans[l].side;
         document.getElementById('loadingTxt').innerText = trans[l].loading;
