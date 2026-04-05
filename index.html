@@ -194,6 +194,10 @@
         <a href="#" onclick="openInApp('https://script.google.com/macros/s/AKfycbxsOFT8KXleBvWlqHicILI0dyYV0kARDLgE4eHFWYEOtAtcvlsr-SY4RwOVJXL5zKI/exec', 'Vacations')" class="nav-link-sidebar">
             <i class="fas fa-calendar-alt"></i> <span class="txt-vacation">الإجازات والأذونات</span>
         </a>
+
+        <a href="#" onclick="openInApp('https://script.google.com/macros/s/AKfycbyVyguuKKWEWnP9L8EUd_oszA2wKSJupny1upcUWLWWY3_9V8XqoVdaFUrFOovdaDCJ/exec', 'HR Letter')" class="nav-link-sidebar">
+            <i class="fas fa-file-signature"></i> <span class="txt-hr-letter">خطابات الموارد البشرية</span>
+        </a>
         
         <a href="#" onclick="openInApp('https://script.google.com/macros/s/AKfycbxTRmqsMHZaJOsqsU2ANYAhpppmxOndjw7V_gjJ0gsRmgl7gcuMm2CoOXhxqTYg-1w/exec', 'Notifications')" class="nav-link-sidebar nav-link-notif">
             <div><i class="fas fa-bell"></i> <span class="txt-notif">الإشعارات الحديثة</span></div>
@@ -312,16 +316,43 @@
 
     function updateTexts(l) {
         const trans = {
-            ar: { finger: "البصمة الذكية", db: "بيانات الموظفين", pay: "مفردات المرتب", vac: "الإجازات والأذونات", notif: "الإشعارات الحديثة", contact: "تواصل معنا", guide: "شرح النظام", back: "رجوع", side: "نظام إدراك", loading: "جاري التحميل...", hr: "Edrak HR System" },
-            en: { finger: "Smart Fingerprint", db: "Employee Data", pay: "Payroll", vac: "Vacations", notif: "Recent Notifications", contact: "Contact Us", guide: "System Guide", back: "Back", side: "Edrak System", loading: "Loading...", hr: "Edrak HR System" }
+            ar: { 
+                finger: "البصمة الذكية", 
+                db: "بيانات الموظفين", 
+                pay: "مفردات المرتب", 
+                vac: "الإجازات والأذونات", 
+                hrLetter: "خطابات الموارد البشرية",
+                notif: "الإشعارات الحديثة", 
+                contact: "تواصل معنا", 
+                guide: "شرح النظام", 
+                back: "رجوع", 
+                side: "نظام إدراك", 
+                loading: "جاري التحميل...", 
+                hr: "Edrak HR System" 
+            },
+            en: { 
+                finger: "Smart Fingerprint", 
+                db: "Employee Data", 
+                pay: "Payroll", 
+                vac: "Vacations", 
+                hrLetter: "HR Letter",
+                notif: "Recent Notifications", 
+                contact: "Contact Us", 
+                guide: "System Guide", 
+                back: "Back", 
+                side: "Edrak System", 
+                loading: "Loading...", 
+                hr: "Edrak HR System" 
+            }
         };
         document.querySelector('.txt-finger').innerText = trans[l].finger;
         document.querySelector('.txt-db').innerText = trans[l].db;
         document.querySelector('.txt-payroll').innerText = trans[l].pay;
         document.querySelector('.txt-vacation').innerText = trans[l].vac;
+        document.querySelector('.txt-hr-letter').innerText = trans[l].hrLetter;
         document.querySelector('.txt-notif').innerText = trans[l].notif;
         document.querySelector('.txt-contact').innerText = trans[l].contact;
-        document.querySelector('.txt-guide').innerText = trans[l].guide; // تحديث نص الشرح
+        document.querySelector('.txt-guide').innerText = trans[l].guide;
         document.getElementById('backTxt').innerText = trans[l].back;
         document.getElementById('sideTitle').innerText = trans[l].side;
         document.getElementById('loadingTxt').innerText = trans[l].loading;
