@@ -195,6 +195,10 @@
             <i class="fas fa-calendar-alt"></i> <span class="txt-vacation">الإجازات والأذونات</span>
         </a>
 
+        <a href="#" onclick="openInApp('https://script.google.com/macros/s/AKfycbyehnZ8ciBwEcF5-3Ansa0NeUaTK2H4m9PyTbtNXtFCfZft3OeM5rHbNWpYiGclKq8/exec', 'HR Archive')" class="nav-link-sidebar">
+            <i class="fas fa-archive"></i> <span class="txt-archive">أرشيف ملفات الموظفين</span>
+        </a>
+
         <a href="#" onclick="openInApp('https://script.google.com/macros/s/AKfycbxPC9OIfOrIAQ1qsc48zth81jmrofr8Ycdixm6hQpiekHxrY6Qwu9ZpiKqvvi_2odbn/exec', 'HR Letter')" class="nav-link-sidebar">
             <i class="fas fa-file-signature"></i> <span class="txt-hr-letter">خطابات الموارد البشرية</span>
         </a>
@@ -321,6 +325,7 @@
                 db: "بيانات الموظفين", 
                 pay: "مفردات المرتب", 
                 vac: "الإجازات والأذونات", 
+                archive: "أرشيف ملفات الموظفين",
                 hrLetter: "خطابات الموارد البشرية",
                 notif: "الإشعارات الحديثة", 
                 contact: "تواصل معنا", 
@@ -335,6 +340,7 @@
                 db: "Employee Data", 
                 pay: "Payroll", 
                 vac: "Vacations", 
+                archive: "HR Archive",
                 hrLetter: "HR Letter",
                 notif: "Recent Notifications", 
                 contact: "Contact Us", 
@@ -349,6 +355,7 @@
         document.querySelector('.txt-db').innerText = trans[l].db;
         document.querySelector('.txt-payroll').innerText = trans[l].pay;
         document.querySelector('.txt-vacation').innerText = trans[l].vac;
+        document.querySelector('.txt-archive').innerText = trans[l].archive; // التحديث للخانة الجديدة
         document.querySelector('.txt-hr-letter').innerText = trans[l].hrLetter;
         document.querySelector('.txt-notif').innerText = trans[l].notif;
         document.querySelector('.txt-contact').innerText = trans[l].contact;
