@@ -11,24 +11,24 @@
     
     <style>
         :root {
-            --edrak-blue: #1A3668;
-            --edrak-red: #E31D2B;
-            --edrak-orange: #F37021;
+           --edrak-blue: #1A3668;
+           --edrak-red: #E31D2B;
+           --edrak-orange: #F37021;
             --soft-bg: #F0F4F8;
             --text-dark: #2C3E50;
         }
 
         body {
-            background-color: var(--soft-bg);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+           background-color: var(--soft-bg);
+           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0; padding: 0; overflow-x: hidden;
             height: 100vh;
             color: var(--text-dark);
         }
 
         .navbar {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+           background: white;
+           box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             padding: 10px 5%;
             position: sticky; top: 0; z-index: 1000;
         }
@@ -37,75 +37,75 @@
 
         .offcanvas { width: 300px !important; border: none; box-shadow: 5px 0 20px rgba(0,0,0,0.1); }
         
-        .sidebar-header { 
-            background: var(--edrak-blue); 
-            color: white; 
+       .sidebar-header { 
+           background: var(--edrak-blue); 
+           color: white; 
             padding: 30px 20px; 
         }
         
-        .nav-link-sidebar {
+       .nav-link-sidebar {
             padding: 18px 25px; color: var(--text-dark); text-decoration: none;
             display: flex; align-items: center; gap: 15px;
             border-bottom: 1px solid #eee; transition: 0.3s; font-weight: 500;
         }
         
-        .nav-link-sidebar i {
+       .nav-link-sidebar i {
             color: var(--edrak-orange);
             width: 20px; text-align: center;
         }
 
-        .nav-link-sidebar:hover { 
+       .nav-link-sidebar:hover { 
             background: #E8EFCF; 
             color: var(--edrak-blue); 
             transform: translateX(-5px); 
         }
 
-        .nav-link-notif { justify-content: space-between !important; }
-        .badge-notif { 
-            background-color: var(--edrak-red); 
+       .nav-link-notif { justify-content: space-between !important; }
+        .badge-notif {
+           background-color: var(--edrak-red); 
             color: white; 
-            border-radius: 50px; 
+           border-radius: 50px; 
             padding: 2px 9px; 
             font-size: 0.8rem; 
             display: none;
-            font-weight: bold;
+           font-weight: bold;
             animation: pulse 2s infinite;
         }
         @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
 
-        .hero-container {
+       .hero-container {
             height: calc(100vh - 80px);
             display: flex; 
-            align-items: center; 
-            justify-content: center;
+           align-items: center; 
+           justify-content: center;
             perspective: 1000px;
             padding: 20px;
-            background: white;
+           background: white;
             overflow: hidden;
         }
         
         .scene-3d {
             width: 80%;
             max-width: 450px;
-            transform-style: preserve-3d;
-            transition: all 0.6s ease;
+           transform-style: preserve-3d;
+           transition: all 0.6s ease;
             transform: rotateX(5deg) rotateY(-5deg);
         }
 
         @media (max-width: 768px) {
             .scene-3d {
                 width: 70%;
-                max-width: 250px; 
-                transform: rotateX(0deg) rotateY(0deg);
+               max-width: 250px; 
+               transform: rotateX(0deg) rotateY(0deg);
             }
         }
 
         .main-hero-img {
             width: 100%;
             height: auto;
-            object-fit: contain;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+           object-fit: contain;
+           border-radius: 20px;
+           box-shadow: 0 15px 35px rgba(0,0,0,0.15);
             border: 5px solid white;
             display: block;
         }
@@ -114,37 +114,37 @@
         .modal-content { height: 100vh; border: none; border-radius: 0; overflow: hidden; position: relative; background-color: white;}
         
         .back-nav-bar { 
-            background: white; 
+           background: white; 
             padding: 12px 25px; 
             display: flex; 
-            align-items: center; 
-            justify-content: space-between; 
-            border-bottom: 2px solid #eee; 
+           align-items: center; 
+           justify-content: space-between; 
+           border-bottom: 2px solid #eee; 
         }
         
-        .modal-title-text { color: var(--edrak-blue); font-weight: bold; }
+       .modal-title-text { color: var(--edrak-blue); font-weight: bold; }
 
-        .btn-back-style { 
-            background: var(--edrak-blue); 
+       .btn-back-style { 
+           background: var(--edrak-blue); 
             color: white; 
             border: none; 
             padding: 8px 25px; 
-            border-radius: 50px; 
-            font-weight: bold; 
+           border-radius: 50px; 
+           font-weight: bold; 
             display: flex; 
-            align-items: center; 
-            gap: 10px; 
+           align-items: center; 
+            gap: 10px;
             cursor: pointer; 
-            transition: 0.3s;
+           transition: 0.3s;
         }
-        .btn-back-style:hover { background: var(--edrak-red); }
+       .btn-back-style:hover { background: var(--edrak-red); }
 
         #globalLoader { position: absolute; top: 65px; left: 0; right: 0; bottom: 0; background: #ffffff; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 1200; }
         .loader-visual { 
             width: 50px; height: 50px; 
             border: 4px solid #f3f3f3; 
-            border-top: 4px solid var(--edrak-orange); 
-            border-radius: 50%; 
+           border-top: 4px solid var(--edrak-orange); 
+           border-radius: 50%; 
             animation: spin 1s linear infinite; 
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
@@ -152,16 +152,16 @@
 
         iframe { width: 100%; height: calc(100vh - 65px); border: none; display: block; visibility: hidden; }
         
-        .lang-toggle { 
+        .lang-toggle {
             cursor: pointer; 
             padding: 6px 18px; 
             border: 2px solid var(--edrak-blue); 
-            border-radius: 25px; 
+           border-radius: 25px; 
             color: var(--edrak-blue); 
-            font-weight: bold; 
-            transition: 0.3s;
+           font-weight: bold; 
+           transition: 0.3s;
         }
-        .lang-toggle:hover { background: var(--edrak-blue); color: white; }
+       .lang-toggle:hover { background: var(--edrak-blue); color: white; }
     </style>
 </head>
 <body>
@@ -170,7 +170,7 @@
     <div class="d-flex align-items-center gap-3">
         <button class="btn p-0 border-0" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
             <i class="fas fa-bars fa-2x"></i>
-        </button>
+       </button>
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_bxPxMDdkYISQbRLcmYnEpiKs0-44MqXMyg&s" height="40" alt="Logo">
     </div>
     <div class="lang-toggle" onclick="toggleLanguage()" id="langBtn">EN</div>
@@ -199,6 +199,10 @@
             <i class="fas fa-archive"></i> <span class="txt-archive">أرشيف ملفات الموظفين</span>
         </a>
 
+        <a href="#" onclick="openInApp('https://script.google.com/macros/s/AKfycbzqpCRjjJhlBqtud7PvOqbx7opNuPONWGXNThlHsKryziEyeTh4w0jIi6pIYvD_nx8/exec', 'HR Renewal System')" class="nav-link-sidebar">
+            <i class="fas fa-sync-alt"></i> <span class="txt-renewal">نظام التجديدات</span>
+        </a>
+
         <a href="#" onclick="openInApp('https://script.google.com/macros/s/AKfycbxPC9OIfOrIAQ1qsc48zth81jmrofr8Ycdixm6hQpiekHxrY6Qwu9ZpiKqvvi_2odbn/exec', 'HR Letter')" class="nav-link-sidebar">
             <i class="fas fa-file-signature"></i> <span class="txt-hr-letter">خطابات الموارد البشرية</span>
         </a>
@@ -220,9 +224,9 @@
 
 <div class="hero-container">
     <div class="scene-3d animate__animated animate__zoomIn">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_bxPxMDdkYISQbRLcmYnEpiKs0-44MqXMyg&s" 
-             class="main-hero-img" 
-             alt="Edrak Illustration">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_bxPxMDdkYISQbRLcmYnEpiKs0-44MqXMyg&s"
+            class="main-hero-img" 
+            alt="Edrak Illustration">
     </div>
 </div>
     
@@ -234,14 +238,14 @@
                 <button type="button" class="btn-back-style" data-bs-dismiss="modal">
                     <span id="backTxt">رجوع</span> <i class="fas fa-chevron-left"></i>
                 </button>
-            </div>
+           </div>
             <div class="modal-body p-0 position-relative">
                 <div id="globalLoader">
                     <div class="loader-visual"></div>
                     <h5 id="loadingTxt" class="mt-3 fw-bold">جاري التحميل...</h5>
                 </div>
                 <iframe src="" id="appIframe" allow="geolocation"></iframe>
-            </div>
+           </div>
         </div>
     </div>
 </div>
@@ -268,29 +272,29 @@
         }
     }
 
-    window.addEventListener('load', updateNotifCount);
+   window.addEventListener('load', updateNotifCount);
 
-    modalEl.addEventListener('hidden.bs.modal', function () {
+   modalEl.addEventListener('hidden.bs.modal', function () {
         iframe.src = "about:blank";
-        iframe.style.visibility = 'hidden';
+       iframe.style.visibility = 'hidden';
     });
 
     function requestLocAndOpen(url, title) {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
+           navigator.geolocation.getCurrentPosition(
                 () => { openInApp(url, title); },
                 () => { openInApp(url, title); },
                 { enableHighAccuracy: true, timeout: 5000 }
-            );
+          );
         } else {
-            openInApp(url, title);
+           openInApp(url, title);
         }
     }
 
     function openInApp(url, title) {
-        document.getElementById('modalTitleDisplay').innerText = title;
-        loader.style.display = 'flex';
-        iframe.style.visibility = 'hidden';
+       document.getElementById('modalTitleDisplay').innerText = title;
+       loader.style.display = 'flex';
+       iframe.style.visibility = 'hidden';
         const finalUrl = url + (url.includes('?') ? '&' : '?') + 'authuser=0';
         modal.show();
         
@@ -305,8 +309,8 @@
 
     iframe.onload = () => { 
         if(iframe.src !== "about:blank" && iframe.src !== "") { 
-            loader.style.display = 'none'; 
-            iframe.style.visibility = 'visible'; 
+           loader.style.display = 'none'; 
+           iframe.style.visibility = 'visible'; 
         } 
     };
 
@@ -314,56 +318,59 @@
         currentLang = currentLang === 'ar' ? 'en' : 'ar';
         const html = document.getElementById('mainHtml');
         html.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
-        document.getElementById('langBtn').innerText = currentLang === 'ar' ? 'EN' : 'AR';
-        updateTexts(currentLang);
+       document.getElementById('langBtn').innerText = currentLang === 'ar' ? 'EN' : 'AR';
+       updateTexts(currentLang);
     }
 
     function updateTexts(l) {
         const trans = {
             ar: { 
-                finger: "البصمة الذكية", 
+               finger: "البصمة الذكية", 
                 db: "بيانات الموظفين", 
                 pay: "مفردات المرتب", 
-                vac: "الإجازات والأذونات", 
-                archive: "أرشيف ملفات الموظفين",
-                hrLetter: "خطابات الموارد البشرية",
-                notif: "الإشعارات الحديثة", 
-                contact: "تواصل معنا", 
+                vac: "الإجازات والأذونات",
+               archive: "أرشيف ملفات الموظفين",
+               renewal: "نظام التجديدات",
+               hrLetter: "خطابات الموارد البشرية",
+                notif: "الإشعارات الحديثة",
+               contact: "تواصل معنا", 
                 guide: "شرح النظام", 
                 back: "رجوع", 
                 side: "نظام إدراك", 
-                loading: "جاري التحميل...", 
+               loading: "جاري التحميل...", 
                 hr: "Edrak HR System" 
             },
             en: { 
-                finger: "Smart Fingerprint", 
+               finger: "Smart Fingerprint", 
                 db: "Employee Data", 
                 pay: "Payroll", 
                 vac: "Vacations", 
-                archive: "HR Archive",
-                hrLetter: "HR Letter",
+               archive: "HR Archive",
+               renewal: "HR Renewal System",
+               hrLetter: "HR Letter",
                 notif: "Recent Notifications", 
-                contact: "Contact Us", 
+               contact: "Contact Us", 
                 guide: "System Guide", 
                 back: "Back", 
                 side: "Edrak System", 
-                loading: "Loading...", 
+               loading: "Loading...", 
                 hr: "Edrak HR System" 
             }
         };
-        document.querySelector('.txt-finger').innerText = trans[l].finger;
-        document.querySelector('.txt-db').innerText = trans[l].db;
-        document.querySelector('.txt-payroll').innerText = trans[l].pay;
-        document.querySelector('.txt-vacation').innerText = trans[l].vac;
-        document.querySelector('.txt-archive').innerText = trans[l].archive; // التحديث للخانة الجديدة
-        document.querySelector('.txt-hr-letter').innerText = trans[l].hrLetter;
-        document.querySelector('.txt-notif').innerText = trans[l].notif;
-        document.querySelector('.txt-contact').innerText = trans[l].contact;
-        document.querySelector('.txt-guide').innerText = trans[l].guide;
-        document.getElementById('backTxt').innerText = trans[l].back;
-        document.getElementById('sideTitle').innerText = trans[l].side;
-        document.getElementById('loadingTxt').innerText = trans[l].loading;
-        document.querySelector('.txt-hr-desc').innerText = trans[l].hr;
+       document.querySelector('.txt-finger').innerText = trans[l].finger;
+       document.querySelector('.txt-db').innerText = trans[l].db;
+       document.querySelector('.txt-payroll').innerText = trans[l].pay;
+       document.querySelector('.txt-vacation').innerText = trans[l].vac;
+       document.querySelector('.txt-archive').innerText = trans[l].archive;
+       document.querySelector('.txt-renewal').innerText = trans[l].renewal; // تحديث النص للخانة الجديدة
+       document.querySelector('.txt-hr-letter').innerText = trans[l].hrLetter;
+       document.querySelector('.txt-notif').innerText = trans[l].notif;
+       document.querySelector('.txt-contact').innerText = trans[l].contact;
+       document.querySelector('.txt-guide').innerText = trans[l].guide;
+       document.getElementById('backTxt').innerText = trans[l].back;
+       document.getElementById('sideTitle').innerText = trans[l].side;
+       document.getElementById('loadingTxt').innerText = trans[l].loading;
+       document.querySelector('.txt-hr-desc').innerText = trans[l].hr;
     }
 </script>
 </body>
