@@ -1,4 +1,4 @@
-const CACHE_NAME = 'edrak-cache-v1.26';
+const CACHE_NAME = 'edrak-cache-v1.27';
 // قائمة الملفات والصور اللي عاوزينها تتحمل وتتحفظ
 const CACHE_NAME = 'edrak-cache-v1.27'; // ارفع الإصدار هنا أيضاً
 const urlsToCache = [
