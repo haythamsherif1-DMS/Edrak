@@ -34,11 +34,7 @@
             position: sticky; top: 0; z-index: 1000;
         }
 
-        .offcanvas {
-            width: 300px !important;
-            border: none;
-            box-shadow: 5px 0 20px rgba(0,0,0,0.1);
-        }
+        .offcanvas { width: 300px !important; border: none; box-shadow: 5px 0 20px rgba(0,0,0,0.1); }
       
        .sidebar-header {
            background: var(--edrak-blue);
@@ -69,7 +65,7 @@
             color: var(--edrak-blue);
         }
 
-        /* الرقم الأحمر الدائري زي الصورة الثانية */
+        /* الرقم الأحمر الدائري المطلوب (نفس شكل الصورة) */
         .notification-badge {
             background-color: #E31D2B;
             color: white;
@@ -220,7 +216,7 @@
             <span><i class="fas fa-file-signature"></i> <span class="txt-hr-letter">خطابات الموارد البشرية</span></span>
         </a>
 
-        <!-- رابط الإشعارات - أحمر دائري -->
+        <!-- رابط الإشعارات بالشكل الأحمر الدائري -->
         <a href="#" onclick="openInApp('https://script.google.com/macros/s/AKfycbyfcDn-J3Alo_inTSEdN4RZjNR9kM2cN3EKmt23ArbnWwJlsgu6jhhOoZkQTZUG3Qg/exec', 'Notifications')" 
            class="nav-link-sidebar nav-link-notif">
             <span class="d-flex align-items-center gap-3">
@@ -275,13 +271,13 @@
     const iframe = document.getElementById('appIframe');
     const loader = document.getElementById('globalLoader');
 
-    // دالة تحديث عدد الإشعارات (أحمر دائري)
+    // دالة تحديث الرقم الأحمر في الـ Sidebar
     function updateNotifCount() {
         if (typeof google !== 'undefined' && google.script && google.script.run) {
             google.script.run
                 .withSuccessHandler(function(count) {
                     const badge = document.getElementById('notifBadge');
-                    console.log("عدد الإشعارات النشطة من الشيت:", count);  // للتصحيح
+                    console.log("عدد الإشعارات النشطة:", count);   // مهم للتصحيح
 
                     if (count && count > 0) {
                         badge.innerText = count;
@@ -291,18 +287,16 @@
                     }
                 })
                 .withFailureHandler(function(err) {
-                    console.error("خطأ في جلب عدد الإشعارات:", err);
+                    console.error("خطأ في جلب العدد:", err);
                     document.getElementById('notifBadge').style.display = 'none';
                 })
                 .getActiveAdsCount();
-        } else {
-            console.log("google.script.run غير متوفر");
         }
     }
 
     window.addEventListener('load', () => {
         updateNotifCount();
-        setInterval(updateNotifCount, 30000); // تحديث كل 30 ثانية
+        setInterval(updateNotifCount, 30000);   // تحديث كل 30 ثانية
     });
 
     modalEl.addEventListener('hidden.bs.modal', function () {
